@@ -1,0 +1,183 @@
+openapi: 3.0.0
+info:
+  title: Documentação Tech Challenge
+  version: '1.0.0'
+  description: API responsável pelo gerenciamento de uma oficina mecânica.
+
+tags:
+  - name: Auth
+    description: Autenticação das APIs administrativas (JWT)
+  - name: Clients
+    description: Cadastro e gestão de clientes
+  - name: Vehicles
+    description: Cadastro e gestão de veículos
+  - name: Services
+    description: Catálogo de serviços oferecidos pela oficina
+  - name: Parts
+    description: Peças e insumos, com controle de estoque
+  - name: ServiceOrders
+    description: Criação, orçamento e acompanhamento de ordens de serviço
+
+servers:
+  - url: http://localhost:3000/api
+    description: Ambiente local
+
+paths: {}
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    GenericPayload:
+      type: object
+      additionalProperties: true
+      description: Payload genérico recebido.
+
+    TestRouteResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Test route is working!
+
+    Client:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 'a1b2c3'
+        name:
+          type: string
+          example: 'Maria Silva'
+        document:
+          type: string
+          description: CPF ou CNPJ
+          example: '123.456.789-00'
+        email:
+          type: string
+          example: 'maria.silva@email.com'
+        phone:
+          type: string
+          example: '(11) 91234-5678'
+
+    Vehicle:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 'v1'
+        clientId:
+          type: string
+          example: 'a1b2c3'
+        plate:
+          type: string
+          example: 'ABC1D23'
+        brand:
+          type: string
+          example: 'Fiat'
+        model:
+          type: string
+          example: 'Uno'
+        year:
+          type: integer
+          example: 2018
+
+    Service:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 's1'
+        name:
+          type: string
+          example: 'Troca de óleo'
+        description:
+          type: string
+          example: 'Troca de óleo e filtro'
+        price:
+          type: number
+          format: float
+          example: 150.0
+
+    Part:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 'p1'
+        name:
+          type: string
+          example: 'Filtro de óleo'
+        sku:
+          type: string
+          example: 'FLT-0012'
+        price:
+          type: number
+          format: float
+          example: 45.9
+        stockQuantity:
+          type: integer
+          example: 20
+
+    ServiceOrder:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 'os1'
+        protocol:
+          type: string
+          example: 'OS-2026-000123'
+        clientId:
+          type: string
+          example: 'a1b2c3'
+        vehicleId:
+          type: string
+          example: 'v1'
+        status:
+          type: string
+          enum:
+            - received
+            - diagnosing
+            - awaiting_approval
+            - in_progress
+            - finished
+            - delivered
+          example: 'received'
+        budgetTotal:
+          type: number
+          format: float
+          example: 350.0
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    ErrorResponse:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          example: 400
+        message:
+          type: string
+          example: Bad Request
+        error:
+          type: string
+          example: Validation Error
+
+    ServerErrorResponse:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          example: 500
+        message:
+          type: string
+          example: Internal Server Error

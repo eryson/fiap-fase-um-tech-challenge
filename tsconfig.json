@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "resolveJsonModule": true,
+    "module": "commonjs",
+    "target": "esnext",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "strictNullChecks": false,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "rootDirs": [
+      "src",
+      "tests"
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "types": [
+      "node",
+      "jest"
+    ]
+  },
+  "include": [
+    "src",
+    "tests",
+    "cli/**/*.ts"
+  ]
+}
