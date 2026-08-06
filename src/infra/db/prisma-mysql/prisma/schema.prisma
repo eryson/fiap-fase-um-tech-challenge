@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Client {
-  id        String   @id
+  id        Int      @id @default(autoincrement())
   name      String
   document  String   @unique
   email     String?
@@ -22,8 +22,8 @@ model Client {
 }
 
 model Vehicle {
-  id       String @id
-  clientId String
+  id       Int    @id @default(autoincrement())
+  clientId Int
   plate    String @unique
   brand    String
   model    String
@@ -37,7 +37,7 @@ model Vehicle {
 }
 
 model Service {
-  id          String  @id
+  id          Int     @id @default(autoincrement())
   name        String
   description String
   price       Decimal @db.Decimal(10, 2)
@@ -48,7 +48,7 @@ model Service {
 }
 
 model Part {
-  id            String  @id
+  id            Int     @id @default(autoincrement())
   name          String
   sku           String  @unique
   price         Decimal @db.Decimal(10, 2)
@@ -69,10 +69,10 @@ enum ServiceOrderStatus {
 }
 
 model ServiceOrder {
-  id          String             @id
+  id          Int                @id @default(autoincrement())
   protocol    String             @unique
-  clientId    String
-  vehicleId   String
+  clientId    Int
+  vehicleId   Int
   status      ServiceOrderStatus @default(received)
   budgetTotal Decimal            @db.Decimal(10, 2)
   createdAt   DateTime           @default(now())
@@ -90,8 +90,8 @@ model ServiceOrder {
 }
 
 model ServiceOrderService {
-  serviceOrderId String
-  serviceId      String
+  serviceOrderId Int
+  serviceId      Int
 
   serviceOrder ServiceOrder @relation(fields: [serviceOrderId], references: [id])
   service      Service      @relation(fields: [serviceId], references: [id])
@@ -101,9 +101,9 @@ model ServiceOrderService {
 }
 
 model ServiceOrderPart {
-  serviceOrderId String
-  partId         String
-  quantity       Int    @default(1)
+  serviceOrderId Int
+  partId         Int
+  quantity       Int @default(1)
 
   serviceOrder ServiceOrder @relation(fields: [serviceOrderId], references: [id])
   part         Part         @relation(fields: [partId], references: [id])

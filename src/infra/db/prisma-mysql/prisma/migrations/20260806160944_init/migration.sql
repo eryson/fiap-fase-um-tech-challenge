@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE `clients` (
-    `id` VARCHAR(191) NOT NULL,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
     `document` VARCHAR(191) NOT NULL,
     `email` VARCHAR(191) NULL,
@@ -13,8 +13,8 @@ CREATE TABLE `clients` (
 
 -- CreateTable
 CREATE TABLE `vehicles` (
-    `id` VARCHAR(191) NOT NULL,
-    `clientId` VARCHAR(191) NOT NULL,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `clientId` INTEGER NOT NULL,
     `plate` VARCHAR(191) NOT NULL,
     `brand` VARCHAR(191) NOT NULL,
     `model` VARCHAR(191) NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE `vehicles` (
 
 -- CreateTable
 CREATE TABLE `services` (
-    `id` VARCHAR(191) NOT NULL,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
     `description` VARCHAR(191) NOT NULL,
     `price` DECIMAL(10, 2) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE `services` (
 
 -- CreateTable
 CREATE TABLE `parts` (
-    `id` VARCHAR(191) NOT NULL,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
     `sku` VARCHAR(191) NOT NULL,
     `price` DECIMAL(10, 2) NOT NULL,
@@ -49,10 +49,10 @@ CREATE TABLE `parts` (
 
 -- CreateTable
 CREATE TABLE `service_orders` (
-    `id` VARCHAR(191) NOT NULL,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
     `protocol` VARCHAR(191) NOT NULL,
-    `clientId` VARCHAR(191) NOT NULL,
-    `vehicleId` VARCHAR(191) NOT NULL,
+    `clientId` INTEGER NOT NULL,
+    `vehicleId` INTEGER NOT NULL,
     `status` ENUM('received', 'diagnosing', 'awaiting_approval', 'in_progress', 'finished', 'delivered') NOT NULL DEFAULT 'received',
     `budgetTotal` DECIMAL(10, 2) NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
@@ -66,16 +66,16 @@ CREATE TABLE `service_orders` (
 
 -- CreateTable
 CREATE TABLE `service_order_services` (
-    `serviceOrderId` VARCHAR(191) NOT NULL,
-    `serviceId` VARCHAR(191) NOT NULL,
+    `serviceOrderId` INTEGER NOT NULL,
+    `serviceId` INTEGER NOT NULL,
 
     PRIMARY KEY (`serviceOrderId`, `serviceId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `service_order_parts` (
-    `serviceOrderId` VARCHAR(191) NOT NULL,
-    `partId` VARCHAR(191) NOT NULL,
+    `serviceOrderId` INTEGER NOT NULL,
+    `partId` INTEGER NOT NULL,
     `quantity` INTEGER NOT NULL DEFAULT 1,
 
     PRIMARY KEY (`serviceOrderId`, `partId`)
