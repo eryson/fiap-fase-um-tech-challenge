@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
+    "rootDir": "./src",
     "resolveJsonModule": true,
     "module": "commonjs",
     "target": "esnext",
@@ -10,23 +11,11 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "rootDirs": [
-      "src",
-      "tests"
-    ],
+    "rootDirs": ["src", "tests"],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     },
-    "types": [
-      "node",
-      "jest"
-    ]
+    "types": ["node", "jest"]
   },
-  "include": [
-    "src",
-    "tests",
-    "cli/**/*.ts"
-  ]
+  "include": ["src", "tests", "cli/**/*.ts"]
 }
