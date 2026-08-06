@@ -1,42 +1,32 @@
 import { Router } from 'express'
 import { adaptRoute } from '@/main/adapters'
-import { makeLoadAllClientsFactory } from '@/main/factories'
+import { makeLoadAllClientsController } from '@/main/factories'
 
 export default (router: Router): void => {
   /**
    * @openapi
-   * /users-queues:
-   *   post:
+   * /client:
+   *   get:
    *     tags:
-   *       - Usuarios x Filas
-   *     summary: Cria o vinculo entre um usuario e uma fila
-   *     description: Cria um registro na relacao `usersQueues` usando `UserId` e `QueueId`.
+   *       - Clients
+   *     summary: Lista todos os clientes
+   *     description: Retorna todos os clientes cadastrados.
    *     security: []
-   *     requestBody:
-   *       required: true
-   *       content:
-   *         application/json:
-   *           schema:
-   *             $ref: '#/components/schemas/UserQueueInput'
    *     responses:
    *       200:
-   *         description: Vinculo criado com sucesso
+   *         description: Lista de clientes retornada com sucesso
    *         content:
    *           application/json:
    *             schema:
-   *               $ref: '#/components/schemas/UserQueue'
-   *       400:
-   *         description: Payload invalido, vinculo ja existente, usuario inexistente ou fila inexistente
-   *         content:
-   *           application/json:
-   *             schema:
-   *               $ref: '#/components/schemas/ErrorResponse'
+   *               type: array
+   *               items:
+   *                 $ref: '#/components/schemas/Client'
    *       500:
    *         description: Erro interno do servidor
    *         content:
    *           application/json:
    *             schema:
-   *               $ref: '#/components/schemas/ErrorResponse'
+   *               $ref: '#/components/schemas/ServerErrorResponse'
    */
-  router.get('/client', adaptRoute(makeLoadAllClientsFactory()))
+  router.get('/client', adaptRoute(makeLoadAllClientsController()))
 }

@@ -6,7 +6,7 @@ export class LoadAllClientsImpl implements LoadAllClients {
     private readonly loadAllClientsRepository: LoadAllClientsRepository
   ) {}
 
-  async loadAll(): Promise<LoadAllClientsRepository.Result | null> {
+  async loadAll(): Promise<LoadAllClients.Result> {
     return await this.loadAllClientsRepository.loadAll()
   }
 }

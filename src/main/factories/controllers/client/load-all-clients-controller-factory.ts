@@ -1,7 +1,7 @@
 import { LoadAllClientsController } from '@/presentation/controllers'
-import { makeDbLoadAllClientsFactory } from '@/main/factories'
+import { makeDbLoadAllClients } from '@/main/factories'
 
-export const makeLoadAllClientsFactory = (): LoadAllClientsController => {
-  const useCase = makeDbLoadAllClientsFactory()
+export const makeLoadAllClientsController = (): LoadAllClientsController => {
+  const useCase = makeDbLoadAllClients()
   return new LoadAllClientsController(useCase)
 }

@@ -37,11 +37,11 @@ yarn start:dev
 
 ## Rotas Principais
 
-1. POST /api/clients — cadastro de cliente
-2. POST /api/vehicles — cadastro de veículo
-3. POST /api/service-orders — abertura de ordem de serviço (OS)
-4. GET /api/service-orders/:id — acompanhamento da OS
-5. PATCH /api/service-orders/:id/status — alteração de status da OS
+1. POST /api/client — cadastro de cliente
+2. POST /api/vehicle — cadastro de veículo
+3. POST /api/service-order — abertura de ordem de serviço (OS)
+4. GET /api/service-order/:id — acompanhamento da OS
+5. PATCH /api/service-order/:id/status — alteração de status da OS
 6. CRUD de serviços e de peças/insumos (com controle de estoque)
 
 ## Documentacao Servida Pela Aplicacao

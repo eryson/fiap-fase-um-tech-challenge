@@ -684,17 +684,17 @@ import { Router } from 'express'
 
 export default (router: Router): void => {
   router.post(
-    '/service-orders',
+    '/service-order',
     auth,
     adaptRoute(makeAddServiceOrderController())
   )
   router.get(
-    '/service-orders/:id',
+    '/service-order/:id',
     auth,
     adaptRoute(makeLoadServiceOrderByIdController())
   )
   router.patch(
-    '/service-orders/:id/status',
+    '/service-order/:id/status',
     auth,
     adaptRoute(makeUpdateServiceOrderStatusController())
   )
@@ -706,7 +706,8 @@ export default (router: Router): void => {
 - rotas devem delegar para `adaptRoute(...)`;
 - middlewares devem ser aplicados na rota;
 - adapters entram quando houver payload externo fora do contrato interno;
-- rotas não instanciam dependências manualmente — usam factories.
+- rotas não instanciam dependências manualmente — usam factories;
+- caminhos de recurso são sempre no singular (ex.: `/client`, `/service-order`), nunca no plural.
 
 ---
 

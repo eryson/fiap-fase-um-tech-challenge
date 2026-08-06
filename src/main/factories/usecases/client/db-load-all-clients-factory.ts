@@ -1,8 +1,8 @@
 import { LoadAllClients } from '@/domain/usecases'
 import { LoadAllClientsImpl } from '@/data/usecases'
-import { ClientsPrismaMysqlRepository } from '@/infra/db'
+import { ClientPrismaMysqlRepository } from '@/infra/db'
 
-export const makeDbLoadAllClientsFactory = (): LoadAllClients => {
-  const clientPrismaRepository = new ClientsPrismaMysqlRepository()
+export const makeDbLoadAllClients = (): LoadAllClients => {
+  const clientPrismaRepository = new ClientPrismaMysqlRepository()
   return new LoadAllClientsImpl(clientPrismaRepository)
 }

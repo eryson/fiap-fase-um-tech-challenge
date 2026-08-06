@@ -45,9 +45,9 @@ Sistema Integrado de Atendimento e Execução de Serviços de uma oficina mecân
 
 ### Controllers (`presentation/controllers`)
 
-- `AddClientController` — `POST /api/clients`
-- `AddVehicleController` — `POST /api/vehicles`
-- `AddServiceOrderController` — `POST /api/service-orders`
+- `AddClientController` — `POST /api/client`
+- `AddVehicleController` — `POST /api/vehicle`
+- `AddServiceOrderController` — `POST /api/service-order`
 
 ### Critérios de aceite
 
@@ -73,9 +73,9 @@ Sistema Integrado de Atendimento e Execução de Serviços de uma oficina mecân
 
 ### Controllers
 
-- `UpdateServiceOrderStatusController` — `PATCH /api/service-orders/:id/status`
-- `LoadServiceOrderByIdController` — `GET /api/service-orders/:id`
-- `LoadActiveServiceOrdersController` — `GET /api/service-orders`
+- `UpdateServiceOrderStatusController` — `PATCH /api/service-order/:id/status`
+- `LoadServiceOrderByIdController` — `GET /api/service-order/:id`
+- `LoadActiveServiceOrdersController` — `GET /api/service-order`
 
 ### Critérios de aceite
 
@@ -99,7 +99,7 @@ Sistema Integrado de Atendimento e Execução de Serviços de uma oficina mecân
 
 ### Controllers
 
-- CRUD em `/api/parts`.
+- CRUD em `/api/part`.
 
 ### Critérios de aceite
 
@@ -112,11 +112,11 @@ Sistema Integrado de Atendimento e Execução de Serviços de uma oficina mecân
 
 ### Requisitos
 
-- CRUD de clientes (`/api/clients`).
-- CRUD de veículos (`/api/vehicles`).
-- CRUD de serviços (`/api/services`).
-- CRUD de peças e insumos (`/api/parts`) — ver Fluxo 3.
-- Listagem e detalhamento de ordens de serviço (`/api/service-orders`).
+- CRUD de clientes (`/api/client`).
+- CRUD de veículos (`/api/vehicle`).
+- CRUD de serviços (`/api/service`).
+- CRUD de peças e insumos (`/api/part`) — ver Fluxo 3.
+- Listagem e detalhamento de ordens de serviço (`/api/service-order`).
 - Monitoramento do tempo médio de execução dos serviços.
 
 ### Casos de uso adicionais

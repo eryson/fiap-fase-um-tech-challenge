@@ -1,2 +1,2 @@
 export * from './prisma-mysql-helper'
-export * from './clients-prisma-repository'
+export * from './client-prisma-mysql-repository'
