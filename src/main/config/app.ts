@@ -1,9 +1,10 @@
 import express from 'express'
 import { Server } from 'http'
 
-import setupMiddlewares from '@/main/config/middlewares'
 import setupRoutes from '@/main/config/routes'
+import setupMiddlewares from '@/main/config/middlewares'
 import setupStaticFiles from '@/main/config/static-files'
+import { setupPrismaMysql } from '@/main/prisma-mysql/prisma-mysql'
 
 import { setupSwagger } from '../docs/swagger/setup-swagger'
 import { setupMarkdownDocs } from '../docs/setup-markdown-docs'
@@ -17,6 +18,7 @@ export const setupApp = async (): Promise<Server> => {
 
   const app = express()
 
+  setupPrismaMysql()
   setupStaticFiles(app)
   setupSwagger(app)
   setupMarkdownDocs(app)

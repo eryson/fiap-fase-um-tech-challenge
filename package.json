@@ -21,7 +21,9 @@
     "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
     "lint": "eslint \"{src,apps,libs,tests}/**/*.ts\" --fix",
     "generate-docs": "ts-node src/main/docs/swagger/swagger.ts",
-    "release": "standard-version"
+    "release": "standard-version",
+    "prisma:generate": "prisma generate --schema=src/infra/db/prisma-mysql/prisma/schema.prisma",
+    "prisma:migrate": "prisma migrate dev --schema=src/infra/db/prisma-mysql/prisma/schema.prisma"
   },
   "keywords": [],
   "author": "",
